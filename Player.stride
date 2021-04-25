@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="Player" extends="Actor" extends-java="Actor" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields>
+        <variable access="private" type="boolean" type-java="boolean" name="canFire" value="true" value-java="true" enable="true"/>
+    </fields>
+    <constructors>
+        <constructor access="public" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="setRotation(270)" expression-java="setRotation(270)" enable="true"/>
+            </body>
+        </constructor>
+    </constructors>
+    <methods>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve">Act - do whatever the Player wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="moveAround()" expression-java="moveAround()" enable="true"/>
+                <call expression="fireBullet()" expression-java="fireBullet()" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="moveAround" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <if condition="Greenfoot.isKeyDown(&quot;right&quot;)" condition-java="Greenfoot.isKeyDown(&quot;right&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="setLocation(getX()+5,getY())" expression-java="setLocation(getX() + 5, getY())" enable="true"/>
+                    </ifStatements>
+                </if>
+                <if condition="Greenfoot.isKeyDown(&quot;left&quot;)" condition-java="Greenfoot.isKeyDown(&quot;left&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="setLocation(getX()-5,getY())" expression-java="setLocation(getX() - 5, getY())" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="fireBullet" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <if condition="Greenfoot.isKeyDown(&quot;space&quot;)&amp;&amp;canFire==true" condition-java="Greenfoot.isKeyDown(&quot;space&quot;) &amp;&amp; canFire == true" enable="true">
+                    <ifStatements>
+                        <call expression="getWorld().addObject(new Bullet(),getX(),getY()-55)" expression-java="getWorld().addObject( new Bullet(), getX(), getY() - 55)" enable="true"/>
+                        <assign dest="canFire" dest-java="canFire" src="false" src-java="false" enable="true"/>
+                    </ifStatements>
+                    <elseIf condition="!Greenfoot.isKeyDown(&quot;space&quot;)" condition-java=" ! Greenfoot.isKeyDown(&quot;space&quot;)">
+                        <assign dest="canFire" dest-java="canFire" src="true" src-java="true" enable="true"/>
+                    </elseIf>
+                </if>
+            </body>
+        </method>
+    </methods>
+</class>

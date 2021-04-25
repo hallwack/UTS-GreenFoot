@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="MyWorld" extends="World" extends-java="World" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields>
+        <variable access="private" type="HealthBar" type-java="HealthBar" name="healthBar" value="new HealthBar()" value-java=" new HealthBar()" enable="true"/>
+        <variable access="private" type="Counter" type-java="Counter" name="counter" value="new Counter()" value-java=" new Counter()" enable="true"/>
+    </fields>
+    <constructors>
+        <constructor access="public" enable="true">
+            <javadoc xml:space="preserve">Constructor for objects of class MyWorld.</javadoc>
+            <params/>
+            <throws/>
+            <delegate target="super" params="600,600,1" params-java="600, 600, 1"/>
+            <body>
+                <call expression="start()" expression-java="start()" enable="true"/>
+            </body>
+        </constructor>
+    </constructors>
+    <methods>
+        <method access="public" type="Counter" type-java="Counter" name="getCounter" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <return value="counter" value-java="counter" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="HealthBar" type-java="HealthBar" name="getHealthBar" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <return value="healthBar" value-java="healthBar" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="addEnemy1()" expression-java="addEnemy1()" enable="true"/>
+                <call expression="addEnemy2()" expression-java="addEnemy2()" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="addEnemy1" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <if condition="Greenfoot.getRandomNumber(20)&lt;1" condition-java="Greenfoot.getRandomNumber(20) &lt; 1" enable="true">
+                    <ifStatements>
+                        <call expression="addObject(new Enemy1(),Greenfoot.getRandomNumber(600),0)" expression-java="addObject( new Enemy1(), Greenfoot.getRandomNumber(600), 0)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="addEnemy2" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <if condition="Greenfoot.getRandomNumber(50)&lt;1" condition-java="Greenfoot.getRandomNumber(50) &lt; 1" enable="true">
+                    <ifStatements>
+                        <call expression="addObject(new Enemy2(),Greenfoot.getRandomNumber(600),0)" expression-java="addObject( new Enemy2(), Greenfoot.getRandomNumber(600), 0)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="start" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="addObject(new Player(),300,530)" expression-java="addObject( new Player(), 300, 530)" enable="true"/>
+                <call expression="new Player().setLocation(300,530)" expression-java=" new Player().setLocation(300, 530)" enable="true"/>
+                <call expression="addObject(counter,120,50)" expression-java="addObject(counter, 120, 50)" enable="true"/>
+                <call expression="addObject(healthBar,500,50)" expression-java="addObject(healthBar, 500, 50)" enable="true"/>
+            </body>
+        </method>
+    </methods>
+</class>

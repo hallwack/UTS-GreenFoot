@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="Enemy1" extends="Enemy" extends-java="Enemy" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields/>
+    <constructors>
+        <constructor access="public" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="setRotation(90)" expression-java="setRotation(90)" enable="true"/>
+            </body>
+        </constructor>
+    </constructors>
+    <methods>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve">Act - do whatever the Enemy1 wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="moveEnemy()" expression-java="moveEnemy()" enable="true"/>
+                <call expression="hitByBullet()" expression-java="hitByBullet()" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="hitByBullet" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <if condition="getOneIntersectingObject(Bullet.class)!=null" condition-java="getOneIntersectingObject(Bullet.class) != null" enable="true">
+                    <ifStatements>
+                        <call expression="getWorld().removeObject(getOneIntersectingObject(Bullet.class))" expression-java="getWorld().removeObject(getOneIntersectingObject(Bullet.class))" enable="true"/>
+                        <variable type="World" type-java="World" name="world" value="getWorld()" value-java="getWorld()" enable="true"/>
+                        <variable type="MyWorld" type-java="MyWorld" name="myWorld" value="(MyWorld)world" value-java="(MyWorld)world" enable="true"/>
+                        <variable type="Counter" type-java="Counter" name="counter" value="myWorld.getCounter()" value-java="myWorld.getCounter()" enable="true"/>
+                        <call expression="counter.addScore()" expression-java="counter.addScore()" enable="true"/>
+                        <call expression="getWorld().removeObject(this)" expression-java="getWorld().removeObject(this)" enable="true"/>
+                    </ifStatements>
+                    <elseIf condition="getY()==599" condition-java="getY() == 599">
+                        <variable type="World" type-java="World" name="world" value="getWorld()" value-java="getWorld()" enable="true"/>
+                        <variable type="MyWorld" type-java="MyWorld" name="myWorld" value="(MyWorld)world" value-java="(MyWorld)world" enable="true"/>
+                        <variable type="HealthBar" type-java="HealthBar" name="healthBar" value="myWorld.getHealthBar()" value-java="myWorld.getHealthBar()" enable="true"/>
+                        <call expression="healthBar.loseHealth()" expression-java="healthBar.loseHealth()" enable="true"/>
+                        <call expression="getWorld().removeObject(this)" expression-java="getWorld().removeObject(this)" enable="true"/>
+                    </elseIf>
+                </if>
+            </body>
+        </method>
+    </methods>
+</class>
